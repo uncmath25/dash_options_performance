@@ -1,0 +1,18 @@
+FROM python:3.13-slim
+LABEL maintainer="Colton Willig <coltonwillig@gmail.com>"
+
+USER root
+
+COPY ./requirements-app.txt /requirements.txt
+RUN pip install --upgrade pip==24.3.1
+RUN pip install -r /requirements.txt
+
+ARG APP_DIR="/app"
+
+COPY ./src $APP_DIR
+
+ENV PYTHONPATH "$PYTHONPATH:$APP_DIR"
+
+WORKDIR $APP_DIR
+
+CMD python3 main.py

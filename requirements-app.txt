@@ -1,0 +1,10 @@
+dash==2.18.2
+dash-bootstrap-components==1.6.0
+flake8==7.1.1
+Flask==3.0.3
+pandas==2.2.3
+plotly==5.24.1
+pymysql==1.1.1
+pytest==8.3.4
+pytest-cov==6.0.0
+pytest-sugar==1.0.0

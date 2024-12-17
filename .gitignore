@@ -1,7 +1,7 @@
 __pycache__
 .pytest_cache
 
-.env.dev
+.env
 
 .ipython
 .jupyter

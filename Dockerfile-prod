@@ -1,0 +1,27 @@
+FROM uncmath25/dash_options_performance_app:latest
+LABEL maintainer="Colton Willig <coltonwillig@gmail.com>"
+
+USER root
+
+RUN apt-get update \
+    && apt-get install -y \
+        gcc \
+        nginx \
+    && rm -rf /var/lib/apt/lists/*
+
+ARG SERVER_DIR="server"
+
+COPY ./$SERVER_DIR/requirements.txt /requirements-server.txt
+RUN pip install --upgrade pip==24.3.1
+RUN pip install -r /requirements-server.txt
+
+COPY ./$SERVER_DIR/nginx.conf /etc/nginx/sites-enabled/default
+
+COPY ./$SERVER_DIR /$SERVER_DIR
+
+EXPOSE 80
+
+WORKDIR /$SERVER_DIR
+
+CMD service nginx start \
+    && uwsgi --ini wsgi.ini
