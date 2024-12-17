@@ -1,0 +1,13 @@
+IBIT_CALL_Jan_16_26_75 Performance Profile
+Break Even Profit Price: 101.96
+Break Even Bitcoin Price: 178000.0
+Expected Stock Price Multiplier: 5
+Asymptotic Multiplier: 3.78
+Realized Multiplier: 3.23
+
+IBIT_CALL_Jan_16_26_100 Performance Profile
+Break Even Profit Price: 123.85
+Break Even Bitcoin Price: 217000.0
+Expected Stock Price Multiplier: 5
+Asymptotic Multiplier: 5.19
+Realized Multiplier: 3.95
