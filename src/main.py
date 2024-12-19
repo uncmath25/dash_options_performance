@@ -2,7 +2,7 @@ from dash import Dash
 from dash.dependencies import Input, Output
 from flask import Flask
 
-from controller.callback import build_fig, compute_break_even_profit_price
+from controller.callback import build_fig, compute_break_even_profit_price, compute_multiplier
 import view.layout as layout
 
 
@@ -23,12 +23,21 @@ dash_app.callback(
     Input(layout.INPUT_OPTION_NUMBER_ID, 'value')
 )(compute_break_even_profit_price)
 dash_app.callback(
+    Output(layout.OUTPUT_MULTIPLIER_ID, 'children'),
+    Input(layout.INPUT_START_STOCK_PRICE_ID, 'value'),
+    Input(layout.INPUT_OPTION_PRICE_ID, 'value'),
+    Input(layout.INPUT_STRIKE_PRICE_ID, 'value'),
+    Input(layout.INPUT_OPTION_NUMBER_ID, 'value'),
+    Input(layout.INPUT_POTENTIAL_STOCK_PRICE_MULTIPLIER_ID, 'value')
+)(compute_multiplier)
+dash_app.callback(
     Output(layout.OUTPUT_FIGURE_ID, 'figure'),
     Input(layout.INPUT_OPTION_NAME_ID, 'value'),
     Input(layout.INPUT_START_STOCK_PRICE_ID, 'value'),
     Input(layout.INPUT_OPTION_PRICE_ID, 'value'),
     Input(layout.INPUT_STRIKE_PRICE_ID, 'value'),
-    Input(layout.INPUT_OPTION_NUMBER_ID, 'value')
+    Input(layout.INPUT_OPTION_NUMBER_ID, 'value'),
+    Input(layout.INPUT_POTENTIAL_STOCK_PRICE_MULTIPLIER_ID, 'value')
 )(build_fig)
 
 if __name__ == '__main__':
